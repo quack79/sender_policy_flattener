@@ -137,3 +137,6 @@ ENV/
 
 sums.json
 result.html
+result.json
+mcg_spf.json
+setup.md

@@ -59,7 +59,7 @@ def email_changes(
         mailserver.sendmail(fromaddr, toaddr, email.as_string())
     except Exception as err:
         print("Email failed: " + str(err))
-        with open("result.html", "w+") as mailfile:
+        with open("./result.html", "w+") as mailfile:
             mailfile.write(html.as_string())
     if test:
         return bindformat

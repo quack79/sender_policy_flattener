@@ -1,10 +1,9 @@
 sender policy flattener
 =======================
-We had a problem in our organisation that caused our SPF records to become invalid:
 
-When customers computers were querying our SPF records, there were more than 10 lookups required after following all of the ``include:`` remarks.
+To fix the more than 10 DNS lookups problem.
 
-Solution? Query them ourselves, and create a much more condense list of SPF records.
+Solution? Follow the SPF records, query them, and create a condensed list of IP addresses.
 
 #### But wait... What if the downstream records change?
 
@@ -13,6 +12,7 @@ Part of what the script does is that it creates a JSON file that keeps track of 
 When the hashsum of your IP Addresses changes, it will send out an email (or just dump HTML if it can't find an email server) with a handy diff & BIND format for viewing what has changed, and promptly updating it.
 
 You could theoretically extract the flat IP records from the resulting JSON file and automatically update your DNS configuration with it.
+--- This is actually what I'm currently working on!!
 
 Installation
 --------------------
@@ -23,6 +23,7 @@ Clone this repo and run
 
 ```shell
 pip install poetry
+poetry lock --no-update
 poetry install
 ```
 
@@ -84,15 +85,11 @@ or
 
 ```shell
 spflat --config spf.json
+poetry run spflat -c spf.json
 ```
 You can specify a config file, or you can specify all of the optional arguments from the command line.
 
 I've provided a ``settings.json`` file with an example configuration file.
-
-
-Supported Python versions
--------------------------
-See the latest result of the build: https://github.com/cetanu/sender_policy_flattener/actions
 
 
 3rd party dependencies

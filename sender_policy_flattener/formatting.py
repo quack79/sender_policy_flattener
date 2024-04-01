@@ -47,23 +47,15 @@ def format_records_for_email(curr_addrs):
     for index, chunk in enumerate(bindformat):
         if "(" in chunk:
             bindformat[index] = (
-                "spf 1 IN TXT (" if count == 0 else "spf{0} 1 IN TXT (".format(count)
+                "@ IN TXT (" if count == 0 else "spf{0} IN TXT (".format(count)
             )
             count += 1
-
-    # output bind format to file
-    bindhtmlformat = (
-        "\n".join(bindformat)
-    )
-    with open("./result.html", "w+") as bindfile:
-        bindfile.write(bindhtmlformat)
 
     bindformat = (
         "<p><h1>BIND compatible format:</h1><pre>"
         + "\n".join(bindformat)
         + "</pre></p>"
     )
-
     return bindformat
 
 

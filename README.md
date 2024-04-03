@@ -1,4 +1,4 @@
-sender policy flattener
+Sender Policy Flattener
 =======================
 
 To fix the more than 10 DNS lookups problem.
@@ -12,28 +12,22 @@ Part of what the script does is that it creates a JSON file that keeps track of 
 When the hashsum of your IP Addresses changes, it will send out an email (or just dump HTML if it can't find an email server) with a handy diff & BIND format for viewing what has changed, and promptly updating it.
 
 You could theoretically extract the flat IP records from the resulting JSON file and automatically update your DNS configuration with it.
+
 --- This is actually what I'm currently working on!!
+--- Trying to use the output JSON along with cloudflare-dns 
 
 Installation
 --------------------
 
-#### via git clone
-
-Clone this repo and run
+#### Via git clone
 
 ```shell
+git clone https://github.com/quack79/sender_policy_flattener.git
+cd sender_policy_flattener
 pip install poetry
 poetry lock --no-update
 poetry install
 ```
-
-
-#### via pip
-
-```shell
-pip install sender_policy_flattener
-```
-
 
 Usage
 ----------------
@@ -71,31 +65,13 @@ optional arguments:
                         Name/path of output file
 ```
 
-Example
+Command-line example
 
 ```shell
-spflat --resolvers 8.8.8.8,8.8.4.4 \
-    --to me@mydomain.com \
-    --from admin@mydomain.com \
-    --subject 'SPF for {zone} has changed!' \
-    --domains gmail.com:txt,sendgrid.com:txt,yahoo.com:a \
-    --sending-domain mydomain.com
+poetry run spflat -c settings.json
 ```
-or
 
-```shell
-spflat --config spf.json
-poetry run spflat -c spf.json
-```
-You can specify a config file, or you can specify all of the optional arguments from the command line.
-
-I've provided a ``settings.json`` file with an example configuration file.
-
-
-3rd party dependencies
-----------------------
-* netaddr
-* dnspython
+A ``settings_example.json`` config file is provided in the examples folder.
 
 
 Example email format

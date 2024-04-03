@@ -14,7 +14,8 @@ When the hashsum of your IP Addresses changes, it will send out an email (or jus
 You could theoretically extract the flat IP records from the resulting JSON file and automatically update your DNS configuration with it.
 
 --- This is actually what I'm currently working on!!
---- Trying to use the output JSON along with cloudflare-dns 
+
+--- Trying to use the output JSON along with [cloudflare-dns](https://github.com/ZigZagT/cloudflare-dns)
 
 Installation
 --------------------

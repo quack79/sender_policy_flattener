@@ -9,11 +9,9 @@ classifiers=[
     'Development Status :: 5 - Production/Stable',
     'License :: OSI Approved :: MIT License',
     'Programming Language :: Python :: Implementation :: CPython',
-    'Programming Language :: Python :: 2.7',
-    'Programming Language :: Python :: 3.3',
-    'Programming Language :: Python :: 3.4',
-    'Programming Language :: Python :: 3.5',
     'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
     'Topic :: Internet :: Name Service (DNS)',
     'Topic :: System :: Systems Administration',
     'Topic :: Utilities',
@@ -27,7 +25,7 @@ repository='https://github.com/cetanu/sender_policy_flattener'
 spflat = 'sender_policy_flattener.cli:main'
 
 [tool.poetry.dependencies]
-python = "^3.6.2"
+python = ">=3.6.2, <3.13"
 dnspython = "^2.2.0"
 netaddr = "^0.8.0"
 
